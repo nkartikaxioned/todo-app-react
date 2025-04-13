@@ -29,7 +29,9 @@ export const TodoMain = () => {
     <>
       <TodoInput 
       todoValue={todoValue}
-      setTodoValue={setTodoValue} />
+      setTodoValue={setTodoValue}
+      setTodoArray={setTodoArray} 
+      getDateFunction={getDateFunction}/>
     </>
   );
 }
