@@ -1,14 +1,14 @@
 import { useState } from "react"
 import { TodoInput } from "./todoInput";
+import { TodoDisplay } from "./todoDisplay";
 
 const localStorageKey = "todoApp";
 export const TodoMain = () => {
   const [todoValue, setTodoValue] = useState({id: "", content: "", checked: false, date: ""});
-    const [todoArray, setTodoArray] = useState(() => {
-      const localStorageValue = localStorage.getItem(localStorageKey);
-      return localStorageValue ? JSON.parse(localStorageValue) : [];
-    }
-  );
+  const [todoArray, setTodoArray] = useState(() => {
+    const localStorageValue = localStorage.getItem(localStorageKey);
+    return localStorageValue ? JSON.parse(localStorageValue) : [];
+  });
 
   localStorage.setItem(localStorageKey, JSON.stringify(todoArray));
 
@@ -27,6 +27,11 @@ export const TodoMain = () => {
 
   return (
     <>
+      <TodoDisplay 
+      todoArray={todoArray} 
+      getDateFunction={getDateFunction} 
+      setTodoArray = {setTodoArray}
+      />
       <TodoInput 
       todoValue={todoValue}
       setTodoValue={setTodoValue}
