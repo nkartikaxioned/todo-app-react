@@ -35,7 +35,7 @@ export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunctio
           <span className="display-error">{todoValue ? "" : "Input Cannot be Empty!"}</span>
       </div>
       <div>
-        <button>Set Task</button>
+        <button type="submit">Set Task</button>
       </div>
     </form>
   )

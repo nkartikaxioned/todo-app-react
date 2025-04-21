@@ -1,16 +1,21 @@
 import { CheckMark } from "./checkMark";
+import { DeleteTodo } from "./deleteTodo";
 
 export const TodoDisplay = ({ todoArray, setTodoArray, getDateFunction }) => {
   return (
     <table>
-      <tr>
-        <th>Status</th>
-        <th>Name</th>
-        <th>Created at</th>
-        <th>Actions</th>
-      </tr>
-      {todoArray.map((element) => {
+      <thead>
         <tr>
+          <th>Status</th>
+          <th>Name</th>
+          <th>Created at</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {todoArray.map((element) => {
+        return(
+        <tr key={element.id}>
           <td>
             <CheckMark 
             element={element} 
@@ -18,12 +23,24 @@ export const TodoDisplay = ({ todoArray, setTodoArray, getDateFunction }) => {
             setTodoArray = {setTodoArray}
             />
           </td>
+          <td>
+            {element.content}
+          </td>
+          <td>
+            {element.date}
+          </td>
+          <td>
+            <DeleteTodo 
+            id = {element.id} 
+            todoArray = {todoArray}
+            setTodoArray = {setTodoArray}
+            />
+          </td>
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>;
+        </tr>
+        )
       })}
+      </tbody>
     </table>
   );
 };
