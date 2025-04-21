@@ -9,6 +9,7 @@ export const TodoMain = () => {
     const localStorageValue = localStorage.getItem(localStorageKey);
     return localStorageValue ? JSON.parse(localStorageValue) : [];
   });
+  const [editTodo, setEditTodo] = useState("");
 
   localStorage.setItem(localStorageKey, JSON.stringify(todoArray));
 
@@ -31,6 +32,8 @@ export const TodoMain = () => {
       todoArray={todoArray} 
       getDateFunction={getDateFunction} 
       setTodoArray = {setTodoArray}
+      editTodo = {editTodo}
+      setEditTodo = {setEditTodo}
       />
       <TodoInput 
       todoValue={todoValue}

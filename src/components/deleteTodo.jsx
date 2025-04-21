@@ -2,8 +2,11 @@
 export const DeleteTodo = ({id, todoArray, setTodoArray}) => {
 
   const handleDelete = (id) => {
-    const updateTodoArray = todoArray.filter((todoElem) => todoElem.id !== id );
-    setTodoArray(updateTodoArray);
+    const alertValue = confirm("Do you want to Delete this Todo");
+    if(alertValue) {
+      const updateTodoArray = todoArray.filter((todoElem) => todoElem.id !== id );
+      setTodoArray(updateTodoArray);
+    }
   }
 
   return (

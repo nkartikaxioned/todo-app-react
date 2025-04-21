@@ -1,7 +1,8 @@
 import { CheckMark } from "./checkMark";
 import { DeleteTodo } from "./deleteTodo";
+import { EditTodo } from "./editTodo";
 
-export const TodoDisplay = ({ todoArray, setTodoArray, getDateFunction }) => {
+export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo, setEditTodo}) => {
   return (
     <table>
       <thead>
@@ -36,7 +37,13 @@ export const TodoDisplay = ({ todoArray, setTodoArray, getDateFunction }) => {
             setTodoArray = {setTodoArray}
             />
           </td>
-          <td></td>
+          <td>
+            <EditTodo 
+            id = {element.id} 
+            editTodo = {editTodo}
+            setEditTodo = {setEditTodo}
+            />
+          </td>
         </tr>
         )
       })}
