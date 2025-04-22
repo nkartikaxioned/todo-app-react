@@ -24,58 +24,64 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
         </tr>
       </thead>
       <tbody>
-      {todoArray.map((element) => {
-        return(
-        <tr key={element.id}>
-          <td>
-            <CheckMark 
-              element={element} 
-              todoArray = {todoArray}
-              setTodoArray = {setTodoArray}
-            />
-          </td>
-          <td>
-            {editTodo === element.id ? 
-              (<input 
-                value = {editTodoContent}
-                onChange={(e) => {handleValueChange(e.target.value)}} />
-              ) : ( 
-              <p className={element.checked ? "line-through" : ""}>{element.content}</p>
-            )}
-          </td>
-          <td>
-            {element.date}
-          </td>
-          <td>
-            {editTodo === element.id ? (
-              <CancelEdit 
-                setEditTodoContent = {setEditTodoContent}
-                setEditTodo = {setEditTodo}
-              />
-            ) : (
-              <DeleteTodo 
-                id = {element.id} 
-                todoArray = {todoArray}
-                setTodoArray = {setTodoArray}
-              />
-            )}
-          </td>
-          <td>
-            <EditTodo 
-              id = {element.id}
-              element = {element} 
-              editTodo = {editTodo}
-              setEditTodo = {setEditTodo}
-              editTodoContent = {editTodoContent}
-              setEditTodoContent = {setEditTodoContent}
-              todoArray = {todoArray}
-              setTodoArray = {setTodoArray}
-              getDateFunction = {getDateFunction}
-            />
-          </td>
-        </tr>
-        )
-      })}
+        {todoArray.length === 0 ? (
+          <tr>
+            <td colSpan="5" className="text-center text-gray-500 py-4">
+              <span className="animate-pulse">💤</span>No todos found. Try a different filter!
+            </td>
+          </tr>
+        ) : (
+          todoArray.map((element) => (
+            <tr key={element.id}>
+              <td>
+                <CheckMark 
+                  element={element} 
+                  todoArray = {todoArray}
+                  setTodoArray = {setTodoArray}
+                />
+              </td>
+              <td>
+                {editTodo === element.id ? 
+                  (<input 
+                    value = {editTodoContent}
+                    onChange={(e) => {handleValueChange(e.target.value)}} />
+                  ) : ( 
+                  <p className={element.checked ? "line-through" : ""}>{element.content}</p>
+                )}
+              </td>
+              <td>
+                {element.date}
+              </td>
+              <td>
+                {editTodo === element.id ? (
+                  <CancelEdit 
+                    setEditTodoContent = {setEditTodoContent}
+                    setEditTodo = {setEditTodo}
+                  />
+                ) : (
+                  <DeleteTodo 
+                    id = {element.id} 
+                    todoArray = {todoArray}
+                    setTodoArray = {setTodoArray}
+                  />
+                )}
+              </td>
+              <td>
+                <EditTodo 
+                  id = {element.id}
+                  element = {element} 
+                  editTodo = {editTodo}
+                  setEditTodo = {setEditTodo}
+                  editTodoContent = {editTodoContent}
+                  setEditTodoContent = {setEditTodoContent}
+                  todoArray = {todoArray}
+                  setTodoArray = {setTodoArray}
+                  getDateFunction = {getDateFunction}
+                />
+              </td>
+            </tr>
+          )
+        ))}
       </tbody>
     </table>
   );
