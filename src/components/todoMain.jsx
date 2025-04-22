@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { IoAddCircleOutline } from "react-icons/io5";
 
 const localStorageKey = "todoApp";
 export const TodoMain = () => {
@@ -32,7 +33,7 @@ export const TodoMain = () => {
     localDate = date.toLocaleDateString(),
     morningNight = hours > 12 ? "pm" : "am";
 
-    return `${formattedHours} : ${formatedMinuites} ${morningNight} ${localDate}`;
+    return `${formattedHours}:${formatedMinuites} ${morningNight} ${localDate}`;
   }
   
   //get count function
@@ -47,18 +48,21 @@ export const TodoMain = () => {
   });
 
   return (
-    <div>
-      <Select onValueChange={(value) => setFilterValue(value)}>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Todo Filter" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All</SelectItem>
-          <SelectItem value="checked">Checked</SelectItem>
-          <SelectItem value="un-checked">Un-Checked</SelectItem>
-        </SelectContent>
-      </Select>
-      <button onClick={(e) => {handleAddTodo()}}>Add Todo</button>
+    <div className="w-[45%] flex flex-col ">
+      <h1>Todo App:</h1>
+      <div className="flex justify-between">
+        <Select onValueChange={(value) => setFilterValue(value)}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Todo Filter" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All</SelectItem>
+            <SelectItem value="checked">Checked</SelectItem>
+            <SelectItem value="un-checked">Un-Checked</SelectItem>
+          </SelectContent>
+        </Select>
+        <button onClick={(e) => {handleAddTodo()}}><IoAddCircleOutline title="Add Todo" size={25}/></button>
+      </div>
       <TodoDisplay 
         todoArray={filteredTodos} 
         getDateFunction={getDateFunction} 

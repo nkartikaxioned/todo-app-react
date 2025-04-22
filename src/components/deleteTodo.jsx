@@ -1,3 +1,4 @@
+import { MdDeleteForever } from "react-icons/md";
 
 export const DeleteTodo = ({id, todoArray, setTodoArray}) => {
   //function to confirm and delete the todo
@@ -11,7 +12,9 @@ export const DeleteTodo = ({id, todoArray, setTodoArray}) => {
 
   return (
     <div>
-      <button onClick={(e) => {handleDelete(id);}}>Delete</button>
+      <button onClick={(e) => {handleDelete(id);}}>
+        <MdDeleteForever size={20}/>
+      </button>
     </div>
   )
 }

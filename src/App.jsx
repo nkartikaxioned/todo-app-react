@@ -5,7 +5,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <section>
+    <section className="w-full min-h-screen flex justify-center align-middle">
       <TodoMain />
     </section>
   )

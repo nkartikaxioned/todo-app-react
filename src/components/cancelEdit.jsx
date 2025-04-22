@@ -1,3 +1,4 @@
+import { MdOutlineCancel } from "react-icons/md";
 
 export const CancelEdit = ({setEditTodoContent, setEditTodo}) => {
   //function to cancel editing and empty values
@@ -7,6 +8,8 @@ export const CancelEdit = ({setEditTodoContent, setEditTodo}) => {
   }
 
   return (
-    <button onClick={(e) => {handleOnClickCancel()}}>Cancel</button>
+    <button onClick={(e) => {handleOnClickCancel()}}>
+      <MdOutlineCancel size={20}/>
+    </button>
   )
 }

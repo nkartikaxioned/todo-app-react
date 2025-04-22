@@ -30,6 +30,7 @@ export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunctio
       <div>
         <div>
           <input type="text" 
+          className="default-input"
           value={todoValue.content} 
           onChange={(e) => {handleOnChange(e.target.value)}} />
         </div>

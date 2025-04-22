@@ -32,7 +32,7 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
           </tr>
         ) : (
           todoArray.map((element) => (
-            <tr key={element.id}>
+            <tr key={element.id} className="text-center">
               <td>
                 <CheckMark 
                   element={element} 

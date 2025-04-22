@@ -10,6 +10,7 @@ export const CheckMark = ({element, todoArray, setTodoArray}) => {
 
   return(
     <input type="checkbox" 
+    className="rounded-checkbox"
     checked={checked} 
     onChange={(e) => {handleOnChange(id)}}/>
   )
