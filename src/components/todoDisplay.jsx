@@ -8,6 +8,7 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
 
   const [editTodoContent, setEditTodoContent] = useState("");
 
+  //function to handle input value change
   const handleValueChange = (value) => {
     setEditTodoContent(value);
   }

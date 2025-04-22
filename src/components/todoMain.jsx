@@ -1,6 +1,13 @@
 import { useState } from "react"
 import { TodoInput } from "./todoInput";
 import { TodoDisplay } from "./todoDisplay";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const localStorageKey = "todoApp";
 export const TodoMain = () => {
@@ -10,6 +17,8 @@ export const TodoMain = () => {
     return localStorageValue ? JSON.parse(localStorageValue) : [];
   });
   const [editTodo, setEditTodo] = useState("");
+  const [addTodoVisible, setAddTodoVisible] = useState(false);
+  const [filterValue, setFilterValue] = useState("all");
 
   localStorage.setItem(localStorageKey, JSON.stringify(todoArray));
 
@@ -25,21 +34,48 @@ export const TodoMain = () => {
 
     return `${formattedHours} : ${formatedMinuites} ${morningNight} ${localDate}`;
   }
+  
+  //get count function
+  const getTotalCount = () => todoArray.length;
+  //add task toggle functionality
+  const handleAddTodo = () => setAddTodoVisible(!addTodoVisible);
+  //fliter functionality
+  const filteredTodos = todoArray.filter(todo => {
+    if (filterValue === "checked") return todo.checked;
+    if (filterValue === "un-checked") return !todo.checked;
+    return true;
+  });
 
   return (
-    <>
+    <div>
+      <Select onValueChange={(value) => setFilterValue(value)}>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Todo Filter" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All</SelectItem>
+          <SelectItem value="checked">Checked</SelectItem>
+          <SelectItem value="un-checked">Un-Checked</SelectItem>
+        </SelectContent>
+      </Select>
+      <button onClick={(e) => {handleAddTodo()}}>Add Todo</button>
       <TodoDisplay 
-      todoArray={todoArray} 
-      getDateFunction={getDateFunction} 
-      setTodoArray = {setTodoArray}
-      editTodo = {editTodo}
-      setEditTodo = {setEditTodo}
+        todoArray={filteredTodos} 
+        getDateFunction={getDateFunction} 
+        setTodoArray = {setTodoArray}
+        editTodo = {editTodo}
+        setEditTodo = {setEditTodo}
       />
-      <TodoInput 
-      todoValue={todoValue}
-      setTodoValue={setTodoValue}
-      setTodoArray={setTodoArray} 
-      getDateFunction={getDateFunction}/>
-    </>
+      {addTodoVisible ? (
+        <TodoInput 
+        todoValue={todoValue}
+        setTodoValue={setTodoValue}
+        setTodoArray={setTodoArray} 
+        getDateFunction={getDateFunction}/>
+      ) : ""}
+      <div>
+        <span>Todo Count : {getTotalCount()}</span>
+      </div>
+    </div>
   );
 }

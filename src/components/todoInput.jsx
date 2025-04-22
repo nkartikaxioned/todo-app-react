@@ -1,6 +1,7 @@
 
 export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunction}) => {
   const uniqueId = Date.now();
+  //function to set todo value
   const handleOnChange = (value) => {
     setTodoValue({
       id: uniqueId,
@@ -9,7 +10,7 @@ export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunctio
       date: getDateFunction(),
     });
   }
-
+ //function to handle form submission and set array conditionally
   const handleFormSubmit = (todoValue) => {
     const {id, content, checked, date} = todoValue;
     if(!todoValue) return;
