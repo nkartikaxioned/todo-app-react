@@ -77,7 +77,7 @@ export const TodoMain = () => {
         setTodoArray={setTodoArray} 
         getDateFunction={getDateFunction}/>
       ) : ""}
-      <div>
+      <div className="mt-5">
         <span>Todo Count : {getTotalCount()}</span>
       </div>
     </div>

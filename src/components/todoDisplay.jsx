@@ -3,6 +3,8 @@ import { CheckMark } from "./checkMark";
 import { DeleteTodo } from "./deleteTodo";
 import { EditTodo } from "./editTodo";
 import { CancelEdit } from "./cancelEdit";
+import { Input } from "@/components/ui/input"
+
 
 export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo, setEditTodo}) => {
 
@@ -42,9 +44,12 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
               </td>
               <td>
                 {editTodo === element.id ? 
-                  (<input 
-                    value = {editTodoContent}
-                    onChange={(e) => {handleValueChange(e.target.value)}} />
+                  (
+                    <Input 
+                      className="default-input" 
+                      value = {editTodoContent} 
+                      onChange={(e) => {handleValueChange(e.target.value)}}
+                    />
                   ) : ( 
                   <p className={element.checked ? "line-through" : ""}>{element.content}</p>
                 )}
@@ -53,31 +58,31 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
                 {element.date}
               </td>
               <td>
-                {editTodo === element.id ? (
-                  <CancelEdit 
-                    setEditTodoContent = {setEditTodoContent}
+                <div className="flex justify-evenly">
+                  {editTodo === element.id ? (
+                    <CancelEdit 
+                      setEditTodoContent = {setEditTodoContent}
+                      setEditTodo = {setEditTodo}
+                    />
+                  ) : (
+                    <DeleteTodo 
+                      id = {element.id} 
+                      todoArray = {todoArray}
+                      setTodoArray = {setTodoArray}
+                    />
+                  )}
+                  <EditTodo 
+                    id = {element.id}
+                    element = {element} 
+                    editTodo = {editTodo}
                     setEditTodo = {setEditTodo}
-                  />
-                ) : (
-                  <DeleteTodo 
-                    id = {element.id} 
+                    editTodoContent = {editTodoContent}
+                    setEditTodoContent = {setEditTodoContent}
                     todoArray = {todoArray}
                     setTodoArray = {setTodoArray}
+                    getDateFunction = {getDateFunction}
                   />
-                )}
-              </td>
-              <td>
-                <EditTodo 
-                  id = {element.id}
-                  element = {element} 
-                  editTodo = {editTodo}
-                  setEditTodo = {setEditTodo}
-                  editTodoContent = {editTodoContent}
-                  setEditTodoContent = {setEditTodoContent}
-                  todoArray = {todoArray}
-                  setTodoArray = {setTodoArray}
-                  getDateFunction = {getDateFunction}
-                />
+                </div>
               </td>
             </tr>
           )

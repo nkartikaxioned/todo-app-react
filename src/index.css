@@ -122,13 +122,24 @@
   h1 { @apply text-6xl font-bold text-gray-600 mb-7 text-center; }
 
   input[type="checkbox"].rounded-checkbox {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    accent-color: #f12929;
+    @apply w-3.5 h-3.5 rounded-[50%] accent-red-500;
   }
 
   .default-input {
     @apply py-0.5 px-2.5 border border-black rounded; 
   }
+
+  table {
+    @apply w-[100%] border-collapse mt-5;
+  }
+  
+  th, td {
+    @apply border-2 border-[#ccc] px-2 py-3 text-center;
+  }
+  
+  button:hover { @apply md:cursor-pointer;}
+  /* Example: Set width of the first column to 30% */
+  /* td:first-child, th:first-child {
+    width: 30%;
+  } */
 }

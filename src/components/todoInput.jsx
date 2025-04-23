@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/input"
 
 export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunction}) => {
   const uniqueId = Date.now();
@@ -26,15 +27,20 @@ export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunctio
   }
 
   return (
-    <form onSubmit={(e)=> {e.preventDefault(); handleFormSubmit(todoValue);}}>
+    <form 
+      className="flex justify-evenly"
+      onSubmit={(e)=> {e.preventDefault(); handleFormSubmit(todoValue);}}>
       <div>
         <div>
-          <input type="text" 
-          className="default-input"
-          value={todoValue.content} 
-          onChange={(e) => {handleOnChange(e.target.value)}} />
+          <Input type="text" 
+            className="default-input"
+            value={todoValue.content} 
+            onChange={(e) => {handleOnChange(e.target.value)}} 
+          />
         </div>
-          <span className="display-error">{todoValue ? "" : "Input Cannot be Empty!"}</span>
+          <span className="display-error">
+            {todoValue ? "" : "Input Cannot be Empty!"}
+          </span>
       </div>
       <div>
         <button type="submit">Set Task</button>
