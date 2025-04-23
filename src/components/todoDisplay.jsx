@@ -29,7 +29,7 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
         {todoArray.length === 0 ? (
           <tr>
             <td colSpan="5" className="text-center text-gray-500 py-4">
-              <span className="animate-pulse">💤</span>No todos found. Try a different filter!
+              <span className="animate-pulse">💤</span>No todos here! Time to relax 😎
             </td>
           </tr>
         ) : (
