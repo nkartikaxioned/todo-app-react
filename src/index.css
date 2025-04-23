@@ -134,12 +134,18 @@
   }
   
   th, td {
-    @apply border-2 border-[#ccc] px-2 py-3 text-center;
+    @apply border-2 rounded border-[#ccc] px-2 py-1.5 text-center h-[64px];
   }
   
   button:hover { @apply md:cursor-pointer;}
-  /* Example: Set width of the first column to 30% */
-  /* td:first-child, th:first-child {
-    width: 30%;
-  } */
+ 
+  .col-status { @apply w-[8%] }
+  .col-name { @apply w-[55%] text-left }
+  .col-created { @apply w-[22%] }
+
+  form {@apply w-[50%] mx-auto bg-gray-200 rounded-2xl p-2}
+
+  .custom-table {
+    @apply border border-[#ccc] rounded-[8px] border-separate border-spacing-0 overflow-hidden;
+  }
 }

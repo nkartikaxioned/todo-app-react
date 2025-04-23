@@ -1,4 +1,5 @@
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunction}) => {
   const uniqueId = Date.now();
@@ -28,12 +29,12 @@ export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunctio
 
   return (
     <form 
-      className="flex justify-evenly"
+      className="flex justify-evenly mt-5"
       onSubmit={(e)=> {e.preventDefault(); handleFormSubmit(todoValue);}}>
       <div>
         <div>
           <Input type="text" 
-            className="default-input"
+            className="default-input bg-white border-black"
             value={todoValue.content} 
             onChange={(e) => {handleOnChange(e.target.value)}} 
           />
@@ -43,7 +44,7 @@ export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunctio
           </span>
       </div>
       <div>
-        <button type="submit">Set Task</button>
+        <Button type="submit">Set Task</Button>
       </div>
     </form>
   )

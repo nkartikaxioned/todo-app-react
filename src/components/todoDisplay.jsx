@@ -16,13 +16,13 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
   }
 
   return (
-    <table>
+    <table className="custom-table">
       <thead>
         <tr>
-          <th>Status</th>
-          <th>Name</th>
-          <th>Created at</th>
-          <th>Actions</th>
+          <th className="col-status">Status</th>
+          <th className="col-name">Name</th>
+          <th className="col-created">Created at</th>
+          <th className="col-actions">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -35,14 +35,14 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
         ) : (
           todoArray.map((element) => (
             <tr key={element.id} className="text-center">
-              <td>
+              <td className="col-status">
                 <CheckMark 
                   element={element} 
                   todoArray = {todoArray}
                   setTodoArray = {setTodoArray}
                 />
               </td>
-              <td>
+              <td className="col-name">
                 {editTodo === element.id ? 
                   (
                     <Input 
@@ -54,11 +54,11 @@ export const TodoDisplay = ({ todoArray, getDateFunction, setTodoArray, editTodo
                   <p className={element.checked ? "line-through" : ""}>{element.content}</p>
                 )}
               </td>
-              <td>
+              <td className="col-created">
                 {element.date}
               </td>
-              <td>
-                <div className="flex justify-evenly">
+              <td className="col-actions">
+                <div className="flex justify-evenly items-baseline">
                   {editTodo === element.id ? (
                     <CancelEdit 
                       setEditTodoContent = {setEditTodoContent}
