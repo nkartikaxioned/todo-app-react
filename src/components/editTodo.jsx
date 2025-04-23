@@ -9,6 +9,7 @@ export const EditTodo = ({id, element, editTodo, setEditTodo, editTodoContent, s
   }
   //function to save and update the todoArray
   const handleSaveCLick = (id) => {
+    if(!editTodoContent) return;
     const editedTodoArray = todoArray.map((todoElem) => todoElem.id === id ? {...todoElem, content: editTodoContent, date: getDateFunction() } : todoElem);
     setTodoArray(editedTodoArray);
     setEditTodoContent("");

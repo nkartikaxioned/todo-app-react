@@ -15,7 +15,7 @@ export const TodoInput = ({todoValue, setTodoValue, setTodoArray, getDateFunctio
  //function to handle form submission and set array conditionally
   const handleFormSubmit = (todoValue) => {
     const {id, content, checked, date} = todoValue;
-    if(!todoValue) return;
+    if(!todoValue.content) return;
 
     setTodoArray((prev)=> [...prev,{
       id: id,
